@@ -5,10 +5,10 @@ index
 
 
 from api.v1.views import app_views
-import jsonify
+from flask import jsonify
 
 
-@app_views.route('/status')
+@app_views.route('/status', methods=['GET'], strict_slashes=False)
 def ok():
     """status ok"""
-    return (jsonify({'status': 'ok'}))
+    return (jsonify(status= 'ok'))
