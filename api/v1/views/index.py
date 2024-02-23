@@ -10,5 +10,5 @@ import jsonify
 
 @app_views.route('/status')
 def ok():
-	"""status ok"""
-	return (jsonify({'status': 'ok'}))
+    """status ok"""
+    return (jsonify({'status': 'ok'}))
