@@ -71,9 +71,16 @@ class FileStorage:
 
     def get(self, cls, id):
         """return a class based on its id"""
-        if cls is not None and issubclass(cls, BaseModel):
-            obj = self.__session.query(cls).filter(cls.id == id).first()
-            return obj
+        if cls and id is not None:
+            res = list(
+                filter(
+                    lambda x: type(x) is cls and x.id == id,
+                    self.__objects.values()
+                )
+            )[0]
+            if res:
+                return res
+        return None
 
     def count(self, cls=None):
         """number of object matching cls"""
