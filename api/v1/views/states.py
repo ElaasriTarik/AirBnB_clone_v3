@@ -4,11 +4,12 @@ states
 """
 
 
+from api.v1.views import app_views
 from flask import Flask, jsonify, abort, request, make_response
+import json
 from models import storage
 from models.state import State
-from api.v1.views import app_views
-import json
+
 
 """app = Flask(__name__)"""
 
