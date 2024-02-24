@@ -58,7 +58,7 @@ def ctreate_city(state_id):
     http_data = request.get_json()
     state = storage.get(State, state_id)
     if not http_data:
-        return (jsonify("Not a JSON"), 400)
+        abort(400, "Not a JSON")
     if not http_data['name']:
         abort(400, "Missing name")
 
@@ -74,7 +74,7 @@ def update_city(city_id):
     """updates a city"""
     http_data = request.get_json()
     if not http_data:
-        return (jsonify("Not a JSON"), 400)
+        abort(400, "Not a JSON")
     if not http_data['name']:
         abort(400, "Missing name")
     city = storage.get(City, city_id)

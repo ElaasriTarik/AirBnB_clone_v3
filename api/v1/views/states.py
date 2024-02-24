@@ -70,7 +70,7 @@ def update_state(state_id):
     """updates a state"""
     http_data = request.get_json()
     if not http_data:
-        return (jsonify("Not a Json"), 400)
+        abort(400, "Not a JSON")
 
     obj = storage.get(State, state_id)
     if obj is not None:
