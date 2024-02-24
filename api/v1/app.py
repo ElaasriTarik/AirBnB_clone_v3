@@ -15,17 +15,16 @@ app.register_blueprint(app_views)
 
 @app.teardown_appcontext
 def call_close(err):
-        """storage close()"""
-        storage.close()
+    """storage close()"""
+    storage.close()
 
 
 @app.errorhandler(404)
 def not_found(err):
-        return (jsonify(error="Not found"), 404)
+    return (jsonify(error="Not found"), 404)
 
 
 if __name__ == "__main__":
-        host = os.environ.get('HBNB_API_HOST', '0.0.0.0')
-        port = int(os.environ.get('HBNB_API_PORT', '5000'))
-
-        app.run(host=host, port=port, threaded=True)
+    host = os.environ.get('HBNB_API_HOST', '0.0.0.0')
+    port = int(os.environ.get('HBNB_API_PORT', '5000'))
+    app.run(host=host, port=port, threaded=True)
