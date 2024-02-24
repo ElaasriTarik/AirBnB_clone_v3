@@ -41,14 +41,14 @@ def ret_state_id(state_id):
                  methods=['DELETE'], strict_slashes=False)
 def remove_state_id(state_id):
     """deletes a state"""
-    states = storage.all(State)
-    j = []
-    for obj in states.values():
-        if obj.to_dict()["id"] == state_id:
-            storage.delete(obj)
-            storage.save()
-        return (jsonify({}), 200)
-    abort(404)
+    obj = storage.get(State, state_id)
+    if obj is not None:
+        obj.delete()
+        storage.save()
+        return (make_response(jsonify({}), 200))
+
+    else:
+        abort(404)
 
 
 @app_views.route('/states', methods=['POST'], strict_slashes=False)
