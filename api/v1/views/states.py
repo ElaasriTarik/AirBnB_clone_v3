@@ -32,7 +32,7 @@ def ret_state_id(state_id):
     for obj in states.values():
         if obj.to_dict()["id"] == state_id:
             j.append(obj.to_dict())
-    if len(j) is 0:
+    if len(j) == 0:
         abort(404)
     return (jsonify(j[0]))
 
@@ -40,7 +40,7 @@ def ret_state_id(state_id):
 @app_views.route('/states/<state_id>',
                  methods=['DELETE'], strict_slashes=False)
 def remove_state_id(state_id):
-    """deletes a state""""
+    """deletes a state"""
     states = storage.all(State)
     j = []
     for obj in states.values():
