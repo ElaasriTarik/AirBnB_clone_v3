@@ -75,8 +75,6 @@ def update_city(city_id):
     http_data = request.get_json()
     if not http_data:
         abort(400, "Not a JSON")
-    if not http_data['name']:
-        abort(400, "Missing name")
     city = storage.get(City, city_id)
     if city is not None:
         for key, value in http_data.items():
