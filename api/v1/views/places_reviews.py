@@ -18,7 +18,7 @@ from models.review import Review
 
 
 @app_views.route('/reviews/<review_id>', strict_slashes=False)
-def ret_review(review_id):
+def ret_reviews(review_id):
     """retreives one city"""
     reviews = storage.get(Review, review_id)
     if not reviews:
