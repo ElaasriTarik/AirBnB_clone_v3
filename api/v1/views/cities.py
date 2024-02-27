@@ -59,7 +59,7 @@ def ctreate_city(state_id):
     state = storage.get(State, state_id)
     if not http_data:
         abort(400, "Not a JSON")
-    if not http_data['name']:
+    if 'name' not in http_data:
         abort(400, "Missing name")
 
     new_obj = City(**http_data)
