@@ -57,6 +57,8 @@ def ctreate_city(state_id):
     """creates a state"""
     http_data = request.get_json()
     state = storage.get(State, state_id)
+    if not state:
+        abort(400)
     if not http_data:
         abort(400, "Not a JSON")
     if 'name' not in http_data:
